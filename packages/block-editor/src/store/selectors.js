@@ -1427,7 +1427,7 @@ export function canMoveBlocks( state, clientIds, rootClientId = null ) {
  *
  * @return {boolean} Whether a given block type can be locked/unlocked.
  */
-export function canLockBlocks( state, nameOrType ) {
+export function canLockBlockType( state, nameOrType ) {
 	if ( ! hasBlockSupport( nameOrType, 'lock', true ) ) {
 		return false;
 	}
