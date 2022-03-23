@@ -94,14 +94,13 @@ describe( 'Gallery', () => {
 		// way that Image uploads take and lose focus.
 		await openListView();
 
-		const galleryListViewItem = await page.waitForXPath(
-			`//a[contains(text(), 'Gallery')]`
-		);
+		// Due to collapsed state of ListView nodes Gallery must be expanded to reveal the child blocks.
+		const galleryListViewItem = (
+			await getListViewBlocks( 'Gallery' )
+		 )[ 0 ];
 		await galleryListViewItem.click();
 
-		const imageListLink = await page.waitForXPath(
-			`//a[contains(text(), 'Image')]`
-		);
+		const imageListLink = ( await getListViewBlocks( 'Image' ) )[ 0 ];
 		await imageListLink.click();
 
 		const captionElement = await figureElement.$(
